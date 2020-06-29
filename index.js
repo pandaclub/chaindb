@@ -25,6 +25,27 @@ const callApi = async (methodUrl, payload) => {
   }
 }
 
+const Redis =  {
+
+  getAsync (key) {
+    const result = await callApi('/api/callRedis', {
+      method: 'getAsync',
+      key
+    })
+    return result;
+  },
+
+  setAsync (key, value, expire = null) {
+    const result = await callApi('/api/callRedis', {
+      method: 'setAsync',
+      key,
+      value,
+      expire
+    })
+    return result;
+  }
+}
+
 class Chain {
   constructor(collectionName){//constructor是一个构造方法，用来接收参数
     this.collectionName = collectionName;//this代表的是实例对象
@@ -32,6 +53,8 @@ class Chain {
     this.docId = null;
     this.skipNo = 0;
     this.limitNo = 10;
+
+    this
   }
 
   where (conditions) {
@@ -136,6 +159,7 @@ class Chain {
 module.exports = function (configServer) {
   dbServer = configServer;
   return {
+    redis : Redis,
     collection (collectionName) {
       return new Chain(collectionName);
     }
