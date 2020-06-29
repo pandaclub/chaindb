@@ -27,7 +27,7 @@ const callApi = async (methodUrl, payload) => {
 
 const Redis =  {
 
-  getAsync (key) {
+  async getAsync (key) {
     const result = await callApi('/api/callRedis', {
       method: 'getAsync',
       key
@@ -35,7 +35,7 @@ const Redis =  {
     return result;
   },
 
-  setAsync (key, value, expire = null) {
+  async setAsync (key, value, expire = null) {
     const result = await callApi('/api/callRedis', {
       method: 'setAsync',
       key,
