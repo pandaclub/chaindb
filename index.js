@@ -54,7 +54,7 @@ class Chain {
     this.skipNo = 0;
     this.limitNo = 10;
 
-    this
+    return this;
   }
 
   where (conditions) {
