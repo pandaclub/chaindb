@@ -77,6 +77,11 @@ class Chain {
     return this;
   }
 
+  populate (str) {
+    this.populateData = str;
+    return this;
+  }
+
   async getOne () {
     return this.get(true)
   }
@@ -108,6 +113,10 @@ class Chain {
     }
     if(this.countStatus) {
       payload.count = this.countStatus;
+    }
+
+    if(this.populateData) {
+      payload.populate = this.populateData;
     }
 
     console.log('payload', JSON.stringify(payload))
