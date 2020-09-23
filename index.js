@@ -72,6 +72,11 @@ class Chain {
     return this;
   }
 
+  sort (obj) {
+    this.sortObj = obj;
+    return this;
+  }
+
   limit (no = 10) {
     this.limitNo = no;
     return this;
@@ -108,6 +113,11 @@ class Chain {
     if(this.skip) {
       payload.skip = this.skipNo;
     }
+
+    if(this.sortObj) {
+      payload.sort = this.sortObj;
+    }
+
     if(this.limit) {
       payload.limit = this.limitNo;
     }
