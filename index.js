@@ -157,6 +157,8 @@ class Chain {
       payload.multiple = multiple;
     }
 
+    console.log(payload);
+
     const result = await callApi('/api/updateCollectionRecords', payload)
     return result;
   }
