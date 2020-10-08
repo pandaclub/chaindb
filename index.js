@@ -143,7 +143,7 @@ class Chain {
     return result;
   }
 
-  async update ({data}) {
+  async update ({data, multiple = false}) {
     const payload = {};
     payload.collection = this.collectionName;
     payload.data = data;
@@ -152,6 +152,9 @@ class Chain {
     }
     if(this.docId) {
       payload.docId = this.docId;
+    }
+    if(multiple) {
+      payload.multiple = multiple;
     }
 
     const result = await callApi('/api/updateCollectionRecords', payload)
