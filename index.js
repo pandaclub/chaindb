@@ -43,6 +43,17 @@ const Redis =  {
       expire
     })
     return result;
+  },
+
+  async call (data) {
+    const {method, key, value, expire = null} = data;
+    const result = await callApi('/api/callRedis', {
+      method,
+      key,
+      value,
+      expire
+    })
+    return result;
   }
 }
 
