@@ -46,10 +46,11 @@ const Redis =  {
   },
 
   async callAsync (data) {
-    const {method, key, value, expire = null} = data;
+    const {method, field, key, value, expire = null} = data;
     const result = await callApi('/api/callRedis', {
       method,
       key,
+      field,
       value,
       expire
     })
