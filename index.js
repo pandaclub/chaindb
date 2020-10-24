@@ -155,7 +155,7 @@ class Chain {
     return result;
   }
 
-  async update ({data, multiple = false}) {
+  async update ({data, multiple = false, renew = true}) {
     const payload = {};
     payload.collection = this.collectionName;
     payload.data = data;
@@ -168,6 +168,7 @@ class Chain {
     if(multiple) {
       payload.multiple = multiple;
     }
+    payload.renew = renew;
 
     console.log(payload);
 
